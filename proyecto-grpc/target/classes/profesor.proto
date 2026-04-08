@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_package = "com.example.gRPC";
+option java_multiple_files = true;
+
+service ProfesorService {
+  rpc ObtenerProfesor (ProfesorRequest) returns (ProfesorResponse);
+}
+
+message ProfesorRequest {
+  int32 id = 1;
+}
+
+message ProfesorResponse {
+  int32 id = 1;
+  string nombre = 2;
+  string especialidad = 3;
+}
