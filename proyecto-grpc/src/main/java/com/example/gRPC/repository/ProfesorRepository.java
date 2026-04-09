@@ -42,6 +42,14 @@ public class ProfesorRepository {
             return Optional.empty();
         }
     }
+    /**
+     * Retorna todos los profesores de la BD.
+     */
+    public java.util.List<Profesor> findAll() {
+        TypedQuery<Profesor> query = em.createQuery(
+            "SELECT p FROM Profesor p", Profesor.class);
+        return query.getResultList();
+    }
 
     /**
      * Persiste un nuevo profesor en la BD.

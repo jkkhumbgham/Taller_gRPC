@@ -2,6 +2,7 @@ com/example/gRPC/JpaUtil.class
 com/example/App.class
 com/example/gRPC/ProfesorResponseOrBuilder.class
 com/example/gRPC/servidor.class
+com/example/gRPC/ListaProfesoresResponseOrBuilder.class
 com/example/gRPC/ProfesorServiceGrpc$ProfesorServiceStub.class
 com/example/gRPC/ProfesorServiceGrpc$ProfesorServiceImplBase.class
 com/example/gRPC/repository/ConsultaLogRepository.class
@@ -10,15 +11,21 @@ com/example/gRPC/ProfesorServiceGrpc$MethodHandlers.class
 com/example/gRPC/ProfesorServiceGrpc$1.class
 com/example/gRPC/ProfesorRequest$Builder.class
 com/example/gRPC/ProfesorServiceGrpc$AsyncService.class
+com/example/gRPC/ListaProfesoresResponse.class
 com/example/gRPC/ProfesorService.class
 com/example/gRPC/ProfesorServiceGrpc$ProfesorServiceFileDescriptorSupplier.class
 com/example/gRPC/ProfesorServiceGrpc$3.class
+com/example/gRPC/VacioRequest$Builder.class
 com/example/gRPC/ProfesorResponse$1.class
+com/example/gRPC/VacioRequestOrBuilder.class
+com/example/gRPC/VacioRequest.class
 com/example/gRPC/ProfesorRequestOrBuilder.class
 com/example/gRPC/ProfesorResponse.class
 com/example/gRPC/ProfesorRequest$1.class
+com/example/gRPC/ListaProfesoresResponse$Builder.class
 com/example/gRPC/ProfesorServiceGrpc$ProfesorServiceBlockingStub.class
 com/example/gRPC/repository/ProfesorRepository.class
+com/example/gRPC/ListaProfesoresResponse$1.class
 com/example/gRPC/ProfesorResponse$Builder.class
 com/example/gRPC/cliente.class
 com/example/gRPC/ProfesorRequest.class
@@ -29,3 +36,4 @@ com/example/gRPC/ProfesorServiceGrpc.class
 com/example/gRPC/ProfesorServiceGrpc$2.class
 com/example/gRPC/ProfesorServiceGrpc$ProfesorServiceBaseDescriptorSupplier.class
 com/example/gRPC/Profesor.class
+com/example/gRPC/VacioRequest$1.class

@@ -1,0 +1,47 @@
+version: "3.9"
+
+networks:
+  red-cliente:
+    driver: bridge
+
+services:
+
+  postgres-cliente:
+    image: postgres:16
+    container_name: postgres-cliente
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: Cliente
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5434:5432"       # 5434 en host para no chocar con los otros
+    volumes:
+      - datos-cliente:/var/lib/postgresql/data
+    networks:
+      - red-cliente
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d Cliente"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  grpc-cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: grpc-cliente
+    environment:
+      MODO: cliente
+      SERVIDOR_HOST: host.docker.internal   # IP del host donde corre el servidor
+      SERVIDOR_PORT: 50051
+    depends_on:
+      postgres-cliente:
+        condition: service_healthy
+    networks:
+      - red-cliente
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # necesario en Linux
+
+volumes:
+  datos-cliente:

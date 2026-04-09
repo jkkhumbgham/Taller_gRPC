@@ -16,6 +16,11 @@ public final class Profesor {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_VacioRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_VacioRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ProfesorRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -25,6 +30,11 @@ public final class Profesor {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ProfesorResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ListaProfesoresResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ListaProfesoresResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -34,29 +44,45 @@ public final class Profesor {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016profesor.proto\"\035\n\017ProfesorRequest\022\n\n\002i" +
-      "d\030\001 \001(\005\"D\n\020ProfesorResponse\022\n\n\002id\030\001 \001(\005\022" +
-      "\016\n\006nombre\030\002 \001(\t\022\024\n\014especialidad\030\003 \001(\t2I\n" +
-      "\017ProfesorService\0226\n\017ObtenerProfesor\022\020.Pr" +
-      "ofesorRequest\032\021.ProfesorResponseB\024\n\020com." +
-      "example.gRPCP\001b\006proto3"
+      "\n\016profesor.proto\"\016\n\014VacioRequest\"\035\n\017Prof" +
+      "esorRequest\022\n\n\002id\030\001 \001(\005\"D\n\020ProfesorRespo" +
+      "nse\022\n\n\002id\030\001 \001(\005\022\016\n\006nombre\030\002 \001(\t\022\024\n\014espec" +
+      "ialidad\030\003 \001(\t\"@\n\027ListaProfesoresResponse" +
+      "\022%\n\nprofesores\030\001 \003(\0132\021.ProfesorResponse2" +
+      "\217\001\n\017ProfesorService\0226\n\017ObtenerProfesor\022\020" +
+      ".ProfesorRequest\032\021.ProfesorResponse\022D\n\031O" +
+      "btenerTodosLosProfesores\022\r.VacioRequest\032" +
+      "\030.ListaProfesoresResponseB\024\n\020com.example" +
+      ".gRPCP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_ProfesorRequest_descriptor =
+    internal_static_VacioRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_VacioRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_VacioRequest_descriptor,
+        new java.lang.String[] { });
+    internal_static_ProfesorRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_ProfesorRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProfesorRequest_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_ProfesorResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_ProfesorResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProfesorResponse_descriptor,
         new java.lang.String[] { "Id", "Nombre", "Especialidad", });
+    internal_static_ListaProfesoresResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ListaProfesoresResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ListaProfesoresResponse_descriptor,
+        new java.lang.String[] { "Profesores", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

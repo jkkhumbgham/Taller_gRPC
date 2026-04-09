@@ -16,6 +16,17 @@ public class ConsultaLogRepository {
     }
 
     /**
+ * Persiste múltiples registros de consulta en la BD del cliente.
+ */
+    public void saveAll(java.util.List<ConsultaLog> logs) {
+        em.getTransaction().begin();
+        for (ConsultaLog log : logs) {
+            em.persist(log);
+        }
+        em.getTransaction().commit();
+        System.out.println("[Cliente] " + logs.size() + " consultas registradas en bd_cliente.");
+    }
+    /**
      * Persiste un registro de consulta gRPC en la BD del cliente.
      */
     public void save(ConsultaLog log) {

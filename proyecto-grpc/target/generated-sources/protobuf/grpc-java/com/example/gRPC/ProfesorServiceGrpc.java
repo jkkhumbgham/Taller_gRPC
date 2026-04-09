@@ -46,6 +46,37 @@ public final class ProfesorServiceGrpc {
     return getObtenerProfesorMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.example.gRPC.VacioRequest,
+      com.example.gRPC.ListaProfesoresResponse> getObtenerTodosLosProfesoresMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ObtenerTodosLosProfesores",
+      requestType = com.example.gRPC.VacioRequest.class,
+      responseType = com.example.gRPC.ListaProfesoresResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.gRPC.VacioRequest,
+      com.example.gRPC.ListaProfesoresResponse> getObtenerTodosLosProfesoresMethod() {
+    io.grpc.MethodDescriptor<com.example.gRPC.VacioRequest, com.example.gRPC.ListaProfesoresResponse> getObtenerTodosLosProfesoresMethod;
+    if ((getObtenerTodosLosProfesoresMethod = ProfesorServiceGrpc.getObtenerTodosLosProfesoresMethod) == null) {
+      synchronized (ProfesorServiceGrpc.class) {
+        if ((getObtenerTodosLosProfesoresMethod = ProfesorServiceGrpc.getObtenerTodosLosProfesoresMethod) == null) {
+          ProfesorServiceGrpc.getObtenerTodosLosProfesoresMethod = getObtenerTodosLosProfesoresMethod =
+              io.grpc.MethodDescriptor.<com.example.gRPC.VacioRequest, com.example.gRPC.ListaProfesoresResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ObtenerTodosLosProfesores"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gRPC.VacioRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.gRPC.ListaProfesoresResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ProfesorServiceMethodDescriptorSupplier("ObtenerTodosLosProfesores"))
+              .build();
+        }
+      }
+    }
+    return getObtenerTodosLosProfesoresMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,13 @@ public final class ProfesorServiceGrpc {
         io.grpc.stub.StreamObserver<com.example.gRPC.ProfesorResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getObtenerProfesorMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void obtenerTodosLosProfesores(com.example.gRPC.VacioRequest request,
+        io.grpc.stub.StreamObserver<com.example.gRPC.ListaProfesoresResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getObtenerTodosLosProfesoresMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +174,14 @@ public final class ProfesorServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getObtenerProfesorMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void obtenerTodosLosProfesores(com.example.gRPC.VacioRequest request,
+        io.grpc.stub.StreamObserver<com.example.gRPC.ListaProfesoresResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getObtenerTodosLosProfesoresMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -159,6 +205,13 @@ public final class ProfesorServiceGrpc {
     public com.example.gRPC.ProfesorResponse obtenerProfesor(com.example.gRPC.ProfesorRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getObtenerProfesorMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.example.gRPC.ListaProfesoresResponse obtenerTodosLosProfesores(com.example.gRPC.VacioRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getObtenerTodosLosProfesoresMethod(), getCallOptions(), request);
     }
   }
 
@@ -185,9 +238,18 @@ public final class ProfesorServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getObtenerProfesorMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.gRPC.ListaProfesoresResponse> obtenerTodosLosProfesores(
+        com.example.gRPC.VacioRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getObtenerTodosLosProfesoresMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_OBTENER_PROFESOR = 0;
+  private static final int METHODID_OBTENER_TODOS_LOS_PROFESORES = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -209,6 +271,10 @@ public final class ProfesorServiceGrpc {
         case METHODID_OBTENER_PROFESOR:
           serviceImpl.obtenerProfesor((com.example.gRPC.ProfesorRequest) request,
               (io.grpc.stub.StreamObserver<com.example.gRPC.ProfesorResponse>) responseObserver);
+          break;
+        case METHODID_OBTENER_TODOS_LOS_PROFESORES:
+          serviceImpl.obtenerTodosLosProfesores((com.example.gRPC.VacioRequest) request,
+              (io.grpc.stub.StreamObserver<com.example.gRPC.ListaProfesoresResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -235,6 +301,13 @@ public final class ProfesorServiceGrpc {
               com.example.gRPC.ProfesorRequest,
               com.example.gRPC.ProfesorResponse>(
                 service, METHODID_OBTENER_PROFESOR)))
+        .addMethod(
+          getObtenerTodosLosProfesoresMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.example.gRPC.VacioRequest,
+              com.example.gRPC.ListaProfesoresResponse>(
+                service, METHODID_OBTENER_TODOS_LOS_PROFESORES)))
         .build();
   }
 
@@ -284,6 +357,7 @@ public final class ProfesorServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ProfesorServiceFileDescriptorSupplier())
               .addMethod(getObtenerProfesorMethod())
+              .addMethod(getObtenerTodosLosProfesoresMethod())
               .build();
         }
       }

@@ -1,0 +1,45 @@
+version: "3.9"
+
+networks:
+  red-servidor:
+    driver: bridge
+
+services:
+
+  postgres-servidor:
+    image: postgres:16
+    container_name: postgres-servidor
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: Taller
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5433:5432"       # 5433 en host para no chocar con postgres local
+    volumes:
+      - datos-servidor:/var/lib/postgresql/data
+    networks:
+      - red-servidor
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d Taller"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  grpc-servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: grpc-servidor
+    environment:
+      MODO: servidor
+    ports:
+      - "50051:50051"     # expone gRPC al host (y al cliente)
+    depends_on:
+      postgres-servidor:
+        condition: service_healthy
+    networks:
+      - red-servidor
+
+volumes:
+  datos-servidor:

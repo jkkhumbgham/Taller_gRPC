@@ -5,7 +5,10 @@ option java_multiple_files = true;
 
 service ProfesorService {
   rpc ObtenerProfesor (ProfesorRequest) returns (ProfesorResponse);
+  rpc ObtenerTodosLosProfesores (VacioRequest) returns (ListaProfesoresResponse);
 }
+
+message VacioRequest {}
 
 message ProfesorRequest {
   int32 id = 1;
@@ -15,4 +18,8 @@ message ProfesorResponse {
   int32 id = 1;
   string nombre = 2;
   string especialidad = 3;
+}
+
+message ListaProfesoresResponse {
+  repeated ProfesorResponse profesores = 1;
 }

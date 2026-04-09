@@ -10,6 +10,42 @@ import java.util.Optional;
 
 public class ProfesorService extends ProfesorServiceGrpc.ProfesorServiceImplBase {
 
+@Override
+public void obtenerTodosLosProfesores(VacioRequest request,
+                                      StreamObserver<ListaProfesoresResponse> responseObserver) {
+    EntityManager em = null;
+    try {
+        em = JpaUtil.getEntityManager();
+        ProfesorRepository repo = new ProfesorRepository(em);
+
+        java.util.List<Profesor> lista = repo.findAll();
+
+        ListaProfesoresResponse.Builder builder = ListaProfesoresResponse.newBuilder();
+        for (Profesor p : lista) {
+            ProfesorResponse resp = ProfesorResponse.newBuilder()
+                    .setId(p.getId())
+                    .setNombre(p.getNombre())
+                    .setEspecialidad(p.getEspecialidad())
+                    .build();
+            builder.addProfesores(resp);
+        }
+
+        responseObserver.onNext(builder.build());
+        responseObserver.onCompleted();
+        System.out.println("[Servidor] Lista de " + lista.size() + " profesores enviada.");
+
+    } catch (Exception e) {
+        System.err.println("[Servidor] Error JPA: " + e.getMessage());
+        responseObserver.onError(
+            Status.INTERNAL
+                .withDescription("Error interno: " + e.getMessage())
+                .asRuntimeException()
+        );
+    } finally {
+        JpaUtil.closeQuietly(em);
+    }
+}
+
     @Override
     public void obtenerProfesor(ProfesorRequest request,
                                 StreamObserver<ProfesorResponse> responseObserver) {
