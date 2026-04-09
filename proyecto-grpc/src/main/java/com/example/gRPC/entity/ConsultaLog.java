@@ -3,20 +3,6 @@ package com.example.gRPC.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * Entidad JPA que registra cada consulta gRPC realizada por el cliente (bd_cliente).
- *
- * Esquema equivalente:
- *   CREATE TABLE consultas_log (
- *       id              SERIAL PRIMARY KEY,
- *       profesor_id     INT NOT NULL,
- *       nombre_obtenido VARCHAR(100),
- *       especialidad    VARCHAR(100),
- *       exitoso         BOOLEAN NOT NULL,
- *       mensaje_error   TEXT,
- *       fecha_consulta  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
- *   );
- */
 @Entity
 @Table(name = "consultas_log")
 public class ConsultaLog {

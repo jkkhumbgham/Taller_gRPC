@@ -17,7 +17,6 @@ public class servidor {
         server.start();
         System.out.println("[Servidor] gRPC corriendo en puerto 50051");
 
-        // Cierre limpio al recibir Ctrl+C
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             System.out.println("[Servidor] Apagando...");
             server.shutdown();

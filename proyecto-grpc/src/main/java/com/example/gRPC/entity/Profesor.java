@@ -3,18 +3,6 @@ package com.example.gRPC.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * Entidad JPA que representa un profesor en la BD del servidor (bd_servidor).
- *
- * Hibernate crea/actualiza la tabla automaticamente con hbm2ddl.auto=update.
- * Esquema equivalente:
- *   CREATE TABLE profesores (
- *       id           SERIAL PRIMARY KEY,
- *       nombre       VARCHAR(100) NOT NULL,
- *       especialidad VARCHAR(100) NOT NULL,
- *       created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
- *   );
- */
 @Entity
 @Table(name = "profesores")
 public class Profesor {

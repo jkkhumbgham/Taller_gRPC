@@ -7,16 +7,11 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 import jakarta.persistence.EntityManager;
 
-/**
- * Cliente gRPC que consulta profesores al servidor
- * y registra cada consulta en su propia BD (bd_cliente) usando JPA.
- */
 public class cliente {
 
     public static void main(String[] args) {
 
-        // Inicializar JPA con la unidad de persistencia del cliente (bd_cliente)
-        JpaUtil.init("clientePU");
+        //JpaUtil.init("clientePU");
 
         ManagedChannel channel = ManagedChannelBuilder
                 .forAddress("localhost", 50051)
@@ -49,7 +44,7 @@ public class cliente {
         } finally {
             channel.shutdown();
         }
-
+/* 
         // Registrar la consulta en bd_cliente usando JPA
         registrarConsulta(
             idAConsultar,
@@ -57,7 +52,7 @@ public class cliente {
             response != null ? response.getEspecialidad() : null,
             exitoso,
             mensajeError
-        );
+        );*/
 
         JpaUtil.shutdown();
     }

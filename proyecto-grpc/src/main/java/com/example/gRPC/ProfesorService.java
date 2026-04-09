@@ -8,10 +8,6 @@ import jakarta.persistence.EntityManager;
 
 import java.util.Optional;
 
-/**
- * Implementacion del servicio gRPC ProfesorService.
- * Usa JPA (Hibernate) para consultar la tabla "profesores" en bd_servidor.
- */
 public class ProfesorService extends ProfesorServiceGrpc.ProfesorServiceImplBase {
 
     @Override

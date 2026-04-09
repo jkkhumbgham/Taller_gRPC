@@ -18,9 +18,9 @@
         <properties>
             <!-- Conexion PostgreSQL - BD del servidor -->
             <property name="jakarta.persistence.jdbc.driver"   value="org.postgresql.Driver"/>
-            <property name="jakarta.persistence.jdbc.url"      value="jdbc:postgresql://localhost:5432/bd_servidor"/>
+            <property name="jakarta.persistence.jdbc.url"      value="jdbc:postgresql://localhost:5432/Taller"/>
             <property name="jakarta.persistence.jdbc.user"     value="postgres"/>
-            <property name="jakarta.persistence.jdbc.password" value="tu_password_aqui"/>
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
 
             <!-- Hibernate -->
             <property name="hibernate.dialect"              value="org.hibernate.dialect.PostgreSQLDialect"/>
