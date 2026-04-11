@@ -5,7 +5,6 @@ networks:
     driver: bridge
 
 services:
-
   postgres-cliente:
     image: postgres:16
     container_name: postgres-cliente
@@ -15,7 +14,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     ports:
-      - "5434:5432"       # 5434 en host para no chocar con los otros
+      - "5434:5432" # 5434 en host para no chocar con los otros
     volumes:
       - datos-cliente:/var/lib/postgresql/data
     networks:
@@ -33,7 +32,7 @@ services:
     container_name: grpc-cliente
     environment:
       MODO: cliente
-      SERVIDOR_HOST: "172.17.0.1"  # IP del host donde corre el servidor
+      SERVIDOR_HOST: "host.docker.internal" # host.docker.internal / 172.17.0.1 : IP del host donde corre el servidor
       SERVIDOR_PORT: 50051
     depends_on:
       postgres-cliente:
@@ -41,7 +40,7 @@ services:
     networks:
       - red-cliente
     extra_hosts:
-      - "host.docker.internal:host-gateway"  # necesario en Linux
+      - "host.docker.internal:host-gateway" # necesario en Linux
 
 volumes:
   datos-cliente:
