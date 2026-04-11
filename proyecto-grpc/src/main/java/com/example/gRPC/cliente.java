@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.gRPC.entity.ConsultaLog;
+import com.example.gRPC.entity.Profesor;
 import com.example.gRPC.repository.ConsultaLogRepository;
 import com.example.gRPC.repository.ProfesorRepository;
-import com.example.gRPC.entity.Profesor;
+
 import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import jakarta.persistence.EntityManager;
 
 public class cliente {
@@ -21,11 +22,12 @@ public class cliente {
         // ── Lee host y puerto del servidor desde variables de entorno ──
         String host = System.getenv().getOrDefault("SERVIDOR_HOST", "localhost");
         int port    = Integer.parseInt(System.getenv().getOrDefault("SERVIDOR_PORT", "50051"));
-
-        ManagedChannel channel = ManagedChannelBuilder
-                .forAddress(host, port)
-                .usePlaintext()
-                .build();
+        System.out.println("HOST: " + host);
+        System.out.println("PORT: " + port);
+        ManagedChannel channel = NettyChannelBuilder
+        .forAddress(new java.net.InetSocketAddress(host, port))
+        .usePlaintext()
+        .build();
 
         ProfesorServiceGrpc.ProfesorServiceBlockingStub stub =
                 ProfesorServiceGrpc.newBlockingStub(channel);

@@ -33,7 +33,7 @@ services:
     container_name: grpc-cliente
     environment:
       MODO: cliente
-      SERVIDOR_HOST: host.docker.internal   # IP del host donde corre el servidor
+      SERVIDOR_HOST: "172.17.0.1"  # IP del host donde corre el servidor
       SERVIDOR_PORT: 50051
     depends_on:
       postgres-cliente:
